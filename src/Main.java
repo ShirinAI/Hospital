@@ -16,6 +16,11 @@ public class Main {
         File patientsList =  new File("patients.csv");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(patientsList))){
             writer.write("patient_id, first_name, last_name, age");
+            writer.newLine();
+            for(Patient patient: patients){
+                writer.write(patient.getPatientId() + "," + patient.getFirstName() + "," + patient.getLastName() + "," + patient.getAge());
+                writer.newLine();
+            }
 
         }catch (Exception e){
             System.out.println(e.getMessage());
