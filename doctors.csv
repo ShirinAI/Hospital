@@ -1,0 +1,13 @@
+doctor_id, first_name, last_name, specialty
+1,Gergana,Georgieva,Anesthesiology
+2,Georgi,Georgiev,Internal diseases
+3,Ivanka,Ivanova,Gastroenterology
+4,Ivan,Ivanov,Endocrinology
+5,Iordanka,Iordanova,Cardiology
+6,Iordan,Iordanov,Dermatology
+7,Simona,Simeonova,Anesthesiology
+8,Simeon,Simeonov,Internal diseases
+9,Dimitar,Dimitrov,Gastroenterology
+10,Denitza,Dimitrova,Endocrinology
+11,Slavka,Slovakova,Cardiology
+12,Sirma,Krasimireva,Dermatology
