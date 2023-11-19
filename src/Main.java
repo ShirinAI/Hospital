@@ -21,6 +21,21 @@ public class Main {
             System.out.println("Invalid login credentials for doctor.");
         }
     }
+    public static void patientLogin(int id, String firstName, Patient[] patients){
+        Patient matchingPatient = null;
+
+        for (Patient patient : patients) {
+            if (patient.getPatientId() == id && patient.getFirstName().equals(firstName)) {
+                matchingPatient = patient;
+                break;
+            }
+        }
+        if (matchingPatient != null) {
+            System.out.println("Login successful. Welcome, " + matchingPatient.getFirstName() + " " + matchingPatient.getLastName());
+        } else {
+            System.out.println("Invalid login credentials for patient.");
+        }
+    }
     public static void main(String[] args) {
         Patient[] patients = new Patient[5];
         patients[0] = new Patient(1, "Sarah", "Jones", 40);
@@ -107,7 +122,12 @@ public class Main {
                     System.out.println("I am a doctor");
                     break;
                 case 2:
-                    //patientLogin();
+                    System.out.println("Please enter your patient ID: ");
+                    int patientId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Please enter your first name: ");
+                    String patientName = scanner.nextLine();
+                    patientLogin(patientId, patientName, patients);
                     System.out.println("I am a patient");
                     break;
 
