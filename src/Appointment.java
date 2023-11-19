@@ -8,8 +8,9 @@ public class Appointment {
     private String date;
     private String time;
     private int doctorId;
+    private boolean isBooked;
 
-    public Appointment(int appointmentId, int patientId, String typeOfExamination, String date, String time, int doctorId) {
+    public Appointment(int appointmentId, int patientId, String typeOfExamination, String date, String time, int doctorId, boolean isBooked) {
         this.appointmentId = appointmentId;
         this.patientId = patientId;
         this.typeOfExamination = typeOfExamination;
