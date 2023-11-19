@@ -50,11 +50,11 @@ public class Main {
         }
 
         List<Appointment> appointments = new ArrayList<>();
-        appointments.add(new Appointment(1,1,"initial","28-06-2021","10:00",2));
-        appointments.add(new Appointment(2,5,"secondary","21-06-2021","12:30",5));
-        appointments.add(new Appointment(3,3,"consultation","15-06-2021","10:30",2));
-        appointments.add(new Appointment(4,4,"initial","15-06-2021","12:30",4));
-        appointments.add(new Appointment(5,2,"procedure","15-06-2021","12:30",7));
+        appointments.add(new Appointment(1,1,"initial","28-06-2021","10:00",2, true));
+        appointments.add(new Appointment(2,5,"secondary","21-06-2021","12:30",5, true));
+        appointments.add(new Appointment(3,3,"consultation","15-06-2021","10:30",2, true));
+        appointments.add(new Appointment(4,4,"initial","15-06-2021","12:30",4, true));
+        appointments.add(new Appointment(5,2,"procedure","15-06-2021","12:30",7, true));
 
         File appointmentsList = new File("appointments.csv");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(appointmentsList))){
@@ -69,6 +69,8 @@ public class Main {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+
+
 
     }
 }
