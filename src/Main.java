@@ -58,7 +58,6 @@ public class Main {
                     // Логика за запазване на нов час при лекар
                     break;
                 case 2:
-                    // Логика за визуализация на всички записани часове
                     displayAppointments(patientId, appointments);
                     break;
                 case 3:
@@ -80,7 +79,7 @@ public class Main {
 
     public static void displayAppointments(int currentPatientId, List<Appointment> appointments) {
         List<Appointment> currentPatientAppointments = appointments.stream()
-                .filter(Appointment -> Appointment.getPatientId() == currentPatientId)
+                .filter(Appointment -> Appointment.getPatient().getPatientId() == currentPatientId)
                 .toList();
         System.out.println(currentPatientAppointments);
     }
@@ -129,20 +128,20 @@ public class Main {
         }
 
         List<Appointment> appointments = new ArrayList<>();
-        appointments.add(new Appointment(1, 1, ExaminationType.INITIAL, "28-06-2021", "10:00", 2));
-        appointments.add(new Appointment(2, 5, ExaminationType.SECONDARY, "21-06-2021", "12:30", 5));
-        appointments.add(new Appointment(3, 3, ExaminationType.CONSULTATION, "15-06-2021", "10:30", 2));
-        appointments.add(new Appointment(4, 4, ExaminationType.INITIAL, "15-06-2021", "12:30", 4));
-        appointments.add(new Appointment(5, 2, ExaminationType.PROCEDURE, "15-06-2021", "12:30", 7));
+        appointments.add(new Appointment(1, patients[0], ExaminationType.INITIAL, "28-06-2021", "10:00", doctors[0]));
+        appointments.add(new Appointment(2, patients[1], ExaminationType.SECONDARY, "21-06-2021", "12:30", doctors[1]));
+        appointments.add(new Appointment(3, patients[3], ExaminationType.CONSULTATION, "15-06-2021", "10:30", doctors[2]));
+        appointments.add(new Appointment(4, patients[4], ExaminationType.INITIAL, "15-06-2021", "12:30", doctors[3]));
+        appointments.add(new Appointment(5, patients[3], ExaminationType.PROCEDURE, "15-06-2021", "12:30", doctors[4]));
 
         File appointmentsList = new File("appointments.csv");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(appointmentsList))) {
             writer.write("appointment_id,patient_id,type_of_examination,date,time,doctor_id");
             writer.newLine();
             for (int i = 0; i < appointments.size(); i++) {
-                writer.write(appointments.get(i).getAppointmentId() + "," + appointments.get(i).getPatientId() + ","
+                writer.write(appointments.get(i).getAppointmentId() + "," + appointments.get(i).getPatient().getPatientId() + ","
                         + appointments.get(i).getExaminationType() + "," + appointments.get(i).getDate() + "," + appointments.get(i).getTime()
-                        + "," + appointments.get(i).getDoctorId());
+                        + "," + appointments.get(i).getDoctor().getDoctorId());
                 writer.newLine();
             }
         } catch (Exception e) {
@@ -198,6 +197,4 @@ public class Main {
         } while (option != 0);
         scanner.close();
     }
-
-
 }
