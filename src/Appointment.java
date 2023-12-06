@@ -1,23 +1,21 @@
 import java.util.Date;
 
 public class Appointment {
-    //appointment_id, patient_id, type_of_examination, date, time, doctor_id
     private int appointmentId;
-    private int patientId;
-  //  private String typeOfExamination;
+    private Patient patient;
     private ExaminationType examinationType;
     private String date;
     private String time;
-    private int doctorId;
+    private Doctor doctor;
 
 
-    public Appointment(int appointmentId, int patientId, ExaminationType examinationType, String date, String time, int doctorId) {
+    public Appointment(int appointmentId, Patient patient, ExaminationType examinationType, String date, String time, Doctor doctor) {
         this.appointmentId = appointmentId;
-        this.patientId = patientId;
+        this.patient = patient;
         this.examinationType = examinationType;
         this.date = date;
         this.time = time;
-        this.doctorId = doctorId;
+        this.doctor = doctor;
     }
 
     public int getAppointmentId() {
@@ -28,16 +26,24 @@ public class Appointment {
         this.appointmentId = appointmentId;
     }
 
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
-
     public ExaminationType getExaminationType() {
         return examinationType;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public void setExaminationType(ExaminationType examinationType) {
@@ -60,23 +66,15 @@ public class Appointment {
         this.time = time;
     }
 
-    public int getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
 
     @Override
     public String toString() {
-        return "Appointment{" +
-                "appointmentId=" + appointmentId +
-                ", patientId=" + patientId +
-                ", typeOfExamination='" + examinationType + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", doctorId=" + doctorId +
-                '}';
+        return "Appointment for current patient " +
+                "appointment id: " + appointmentId +
+                ", patient: " + patient.getFirstName() + " " + patient.getLastName() +
+                ", typeOfExamination: " + examinationType +
+                ", date: " + date +
+                ", time: " + time +
+                ", doctor: " + " Dr." + doctor.getLastName() +"\n";
     }
 }
