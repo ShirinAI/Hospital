@@ -76,6 +76,5 @@ public class Appointment {
                 ", date: " + date +
                 ", time: " + time +
                 ", doctor: " + " Dr." + doctor.getLastName() +"\n";
-
     }
 }
