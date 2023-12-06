@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void doctorLogin(int id, String lastName, Doctor[] doctors){
+    public static void doctorLogin(int id, String lastName, Doctor[] doctors, List<Appointment> appointments) {
         Doctor matchingDoctor = null;
 
         for (Doctor doctor : doctors) {
@@ -18,10 +18,11 @@ public class Main {
         if (matchingDoctor != null) {
             System.out.println("Login successful. Welcome, Dr. " + matchingDoctor.getFirstName() + " " + matchingDoctor.getLastName());
         } else {
-            System.out.println("Invalid login credentials for doctor.");
+            System.out.println("Invalid login credentials for doctor. Please try again.");
         }
     }
-    public static void patientLogin(int id, String firstName, Patient[] patients){
+
+    public static void patientLogin(int id, String firstName, Patient[] patients, List<Appointment> appointments) {
         Patient matchingPatient = null;
 
         for (Patient patient : patients) {
@@ -32,10 +33,58 @@ public class Main {
         }
         if (matchingPatient != null) {
             System.out.println("Login successful. Welcome, " + matchingPatient.getFirstName() + " " + matchingPatient.getLastName());
+            patientControls(id, appointments);
         } else {
-            System.out.println("Invalid login credentials for patient.");
+            System.out.println("Invalid login credentials for patient. Please try again");
         }
     }
+
+    public static void patientControls(int patientId, List<Appointment> appointments) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("Please select an option:");
+            System.out.println("1. Make a new appointment");
+            System.out.println("2. See all booked appointments");
+            System.out.println("3. Change date or time of an appointment");
+            System.out.println("4. Cancel an appointment");
+            System.out.println("5. Exit");
+
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    // Логика за запазване на нов час при лекар
+                    break;
+                case 2:
+                    // Логика за визуализация на всички записани часове
+                    displayAppointments(patientId, appointments);
+                    break;
+                case 3:
+                    // Логика за промяна на датата/часа на записан час
+                    // modifyAppointment(patientId);
+                    break;
+                case 4:
+                    // Логика за отказване от записан час
+                    //cancelAppointment(patientId);
+                    break;
+                case 5:
+                    System.out.println("Exit");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please choose from the options below.");
+            }
+        } while (choice != 5);
+    }
+
+    public static void displayAppointments(int currentPatientId, List<Appointment> appointments) {
+        List<Appointment> currentPatientAppointments = appointments.stream()
+                .filter(Appointment -> Appointment.getPatientId() == currentPatientId)
+                .toList();
+        System.out.println(currentPatientAppointments);
+    }
+
     public static void main(String[] args) {
         Patient[] patients = new Patient[5];
         patients[0] = new Patient(1, "Sarah", "Jones", 40);
@@ -114,26 +163,40 @@ public class Main {
             switch (option) {
                 case 1:
                     System.out.println("Please enter your doctor's ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
+                    int id = 0;
+                    while (true) {
+                        try {
+                            id = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Please enter a NUMBER.");
+                        }
+                    }
                     System.out.println("Please enter your last name: ");
                     String surname = scanner.nextLine();
-                    doctorLogin(id, surname, doctors);
+                    doctorLogin(id, surname, doctors, appointments);
                     break;
                 case 2:
                     System.out.println("Please enter your patient ID: ");
-                    int patientId = scanner.nextInt();
-                    scanner.nextLine();
+                    int patientId = 0;
+                    while (true) {
+                        try {
+                            patientId = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Please enter a NUMBER.");
+                        }
+                    }
                     System.out.println("Please enter your first name: ");
                     String patientName = scanner.nextLine();
-                    patientLogin(patientId, patientName, patients);
+                    patientLogin(patientId, patientName, patients, appointments);
                     break;
-
                 default:
                     System.out.println("Invalid option. Please choose from the options below.");
                     break;
             }
         } while (option != 0);
+        scanner.close();
     }
 
 
