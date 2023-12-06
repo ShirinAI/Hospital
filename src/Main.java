@@ -129,11 +129,11 @@ public class Main {
         }
 
         List<Appointment> appointments = new ArrayList<>();
-        appointments.add(new Appointment(1, 1, "initial", "28-06-2021", "10:00", 2));
-        appointments.add(new Appointment(2, 5, "secondary", "21-06-2021", "12:30", 5));
-        appointments.add(new Appointment(3, 3, "consultation", "15-06-2021", "10:30", 2));
-        appointments.add(new Appointment(4, 4, "initial", "15-06-2021", "12:30", 4));
-        appointments.add(new Appointment(5, 2, "procedure", "15-06-2021", "12:30", 7));
+        appointments.add(new Appointment(1, 1, ExaminationType.INITIAL, "28-06-2021", "10:00", 2));
+        appointments.add(new Appointment(2, 5, ExaminationType.SECONDARY, "21-06-2021", "12:30", 5));
+        appointments.add(new Appointment(3, 3, ExaminationType.CONSULTATION, "15-06-2021", "10:30", 2));
+        appointments.add(new Appointment(4, 4, ExaminationType.INITIAL, "15-06-2021", "12:30", 4));
+        appointments.add(new Appointment(5, 2, ExaminationType.PROCEDURE, "15-06-2021", "12:30", 7));
 
         File appointmentsList = new File("appointments.csv");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(appointmentsList))) {
@@ -141,7 +141,7 @@ public class Main {
             writer.newLine();
             for (int i = 0; i < appointments.size(); i++) {
                 writer.write(appointments.get(i).getAppointmentId() + "," + appointments.get(i).getPatientId() + ","
-                        + appointments.get(i).getTypeOfExamination() + "," + appointments.get(i).getDate() + "," + appointments.get(i).getTime()
+                        + appointments.get(i).getExaminationType() + "," + appointments.get(i).getDate() + "," + appointments.get(i).getTime()
                         + "," + appointments.get(i).getDoctorId());
                 writer.newLine();
             }

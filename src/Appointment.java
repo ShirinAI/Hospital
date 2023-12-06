@@ -4,16 +4,17 @@ public class Appointment {
     //appointment_id, patient_id, type_of_examination, date, time, doctor_id
     private int appointmentId;
     private int patientId;
-    private String typeOfExamination;
+  //  private String typeOfExamination;
+    private ExaminationType examinationType;
     private String date;
     private String time;
     private int doctorId;
 
 
-    public Appointment(int appointmentId, int patientId, String typeOfExamination, String date, String time, int doctorId) {
+    public Appointment(int appointmentId, int patientId, ExaminationType examinationType, String date, String time, int doctorId) {
         this.appointmentId = appointmentId;
         this.patientId = patientId;
-        this.typeOfExamination = typeOfExamination;
+        this.examinationType = examinationType;
         this.date = date;
         this.time = time;
         this.doctorId = doctorId;
@@ -35,12 +36,12 @@ public class Appointment {
         this.patientId = patientId;
     }
 
-    public String getTypeOfExamination() {
-        return typeOfExamination;
+    public ExaminationType getExaminationType() {
+        return examinationType;
     }
 
-    public void setTypeOfExamination(String typeOfExamination) {
-        this.typeOfExamination = typeOfExamination;
+    public void setExaminationType(ExaminationType examinationType) {
+        this.examinationType = examinationType;
     }
 
     public String getDate() {
@@ -72,7 +73,7 @@ public class Appointment {
         return "Appointment{" +
                 "appointmentId=" + appointmentId +
                 ", patientId=" + patientId +
-                ", typeOfExamination='" + typeOfExamination + '\'' +
+                ", typeOfExamination='" + examinationType + '\'' +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", doctorId=" + doctorId +
