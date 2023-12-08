@@ -124,6 +124,7 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         List<Doctor> doctors = DataReader.readDoctorFromFile(scan, "doctors.csv");
+        System.out.println("");
         List<Patient> patients = DataReader.readPatientsFromFile(scan, "patients.csv");
         List<Appointment> appointments = DataReader.readAppointmentsFromFile(scan, "appointments.csv", patients, doctors);
         //vhod
