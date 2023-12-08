@@ -18,7 +18,7 @@ public class DataReader {
                 int doctorId = Integer.parseInt(arr[0].trim());
                 String firstName = arr[1].trim();
                 String lastName = arr[2].trim();
-                String specialty = arr[3].trim();
+                DoctorSpecialty specialty = DoctorSpecialty.valueOf(arr[3].trim());
                 Doctor doctor = new Doctor(doctorId, firstName, lastName, specialty);
                 doctors.add(doctor);
             }
