@@ -1,4 +1,9 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 public class Appointment {
     private int appointmentId;
@@ -17,6 +22,7 @@ public class Appointment {
         this.time = time;
         this.doctor = doctor;
     }
+
 
     public int getAppointmentId() {
         return appointmentId;
@@ -70,11 +76,12 @@ public class Appointment {
     @Override
     public String toString() {
         return "Appointment for current patient " +
-                "appointment id: " + appointmentId +
-                ", patient: " + patient.getFirstName() + " " + patient.getLastName() +
-                ", typeOfExamination: " + examinationType +
-                ", date: " + date +
-                ", time: " + time +
-                ", doctor: " + " Dr." + doctor.getLastName() +"\n";
+                "appointment id: " +
+                appointmentId + ", " +
+               patient.getFirstName() + " " + patient.getLastName()+ ", " +
+                examinationType +", " +
+                date +", " +
+                time +", " +
+                " Dr." + doctor.getLastName() +"\n";
     }
 }

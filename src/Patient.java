@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.List;
 
 public class Patient {
@@ -5,7 +8,6 @@ public class Patient {
     private String firstName;
     private String lastName;
     private int age;
-    private List<Appointment> patientAppointments;
 
     public Patient(int patientId, String firstName, String lastName, int age) {
         this.patientId = patientId;
@@ -13,6 +15,20 @@ public class Patient {
         this.lastName = lastName;
         this.age = age;
 
+    }
+
+    public static void writePatientToFile(Patient[] patientsList){
+        File patientsListFile = new File("patients.csv");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(patientsListFile))) {
+            writer.write("patient_id, first_name, last_name, age");
+            writer.newLine();
+            for (Patient patient : patientsList) {
+                writer.write(patient.getPatientId() + "," + patient.getFirstName() + "," + patient.getLastName() + "," + patient.getAge());
+                writer.newLine();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public int getPatientId() {
@@ -63,8 +79,6 @@ public class Patient {
                 "patientId=" + patientId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", patientAppointments=" + patientAppointments +
-                '}';
+                ", age=" + age + "}";
     }
 }

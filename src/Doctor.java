@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 public class Doctor {
     private int doctorId;
     private String firstName;
@@ -9,6 +13,19 @@ public class Doctor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.specialty = specialty;
+    }
+    public static void writeDoctorListToFile(Doctor[] doctorsList){
+        File doctorList = new File("doctors.csv");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(doctorList))) {
+            writer.write("doctor_id, first_name, last_name, specialty");
+            writer.newLine();
+            for (Doctor doctor : doctorsList) {
+                writer.write(doctor.getDoctorId() + "," + doctor.getFirstName() + "," + doctor.getLastName() + "," + doctor.getSpecialty());
+                writer.newLine();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public int getDoctorId() {
@@ -50,6 +67,6 @@ public class Doctor {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", specialty='" + specialty + '\'' +
-                '}';
+                '}' + "\n";
     }
 }
