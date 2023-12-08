@@ -23,7 +23,14 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-
+    public Appointment() {
+        this.appointmentId = 0;
+        this.patient = null;
+        this.examinationType = null;
+        this.date = "0";
+        this.time = "0";
+        this.doctor = null;
+    }
     public int getAppointmentId() {
         return appointmentId;
     }

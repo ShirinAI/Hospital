@@ -6,9 +6,9 @@ public class Doctor {
     private int doctorId;
     private String firstName;
     private String lastName;
-    private String specialty;
+    private DoctorSpecialty specialty;
 
-    public Doctor(int doctorId, String firstName, String lastName, String specialty) {
+    public Doctor(int doctorId, String firstName, String lastName, DoctorSpecialty specialty) {
         this.doctorId = doctorId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,11 +52,11 @@ public class Doctor {
         this.lastName = lastName;
     }
 
-    public String getSpecialty() {
+    public DoctorSpecialty getSpecialty() {
         return specialty;
     }
 
-    public void setSpecialty(String specialty) {
+    public void setSpecialty(DoctorSpecialty specialty) {
         this.specialty = specialty;
     }
 
