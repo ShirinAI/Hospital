@@ -6,13 +6,11 @@ public class AppointmentManager {
     public static void bookAppointment(Patient currentPatient, List<Appointment> appointments, List<Doctor> doctors, Scanner scanner) {
         int appointmentId = appointments.size()+1;
         System.out.println("Choose examination type: INITIAL, SECONDARY, CONSULTATION, OR PROCEDURE");
-
+        scanner.nextLine();
         String examination = "";
         ExaminationType examinationType = null;
-
         while (examinationType == null) {
             try {
-                scanner.nextLine();
                 examination = scanner.nextLine().toUpperCase();
                 examinationType = ExaminationType.valueOf(examination);
             } catch (IllegalArgumentException e) {
