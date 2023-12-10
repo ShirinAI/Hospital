@@ -40,7 +40,6 @@ public class Main {
         List<Doctor> doctors = DataReader.readDoctorFromFile(scanner, "doctors.csv");
         List<Patient> patients = DataReader.readPatientsFromFile(scanner, "patients.csv");
         List<Appointment> appointments = DataReader.readAppointmentsFromFile(scanner, "appointments.csv", patients, doctors);
-
         int option;
         do {
             System.out.println("Select an option:");
@@ -54,16 +53,18 @@ public class Main {
                 case 1:
                     System.out.println("Please enter your doctor's ID: ");
                     int id = NumberValidator.validateNumber(scanner);
+                    Doctor currentDoctor = UserManager.findDoctorById(id, doctors);
                     System.out.println("Please enter your last name: ");
                     String surname = scanner.nextLine();
-                    LoginManager.doctorLogin(id, surname, doctors, appointments, scanner);
+                    LoginManager.doctorLogin(currentDoctor, id, surname, doctors, appointments, scanner);
                     break;
                 case 2:
                     System.out.println("Please enter your patient ID: ");
                     int patientId = NumberValidator.validateNumber(scanner);
+                    Patient currentPatient = UserManager.findPatientById(patientId, patients);
                     System.out.println("Please enter your first name: ");
                     String patientName = scanner.nextLine();
-                    LoginManager.patientLogin(patientId, patientName, patients, appointments, doctors, scanner);
+                    LoginManager.patientLogin(currentPatient, patientId, patientName, patients, appointments, doctors, scanner);
                     break;
                 default:
                     System.out.println("Invalid option. Please choose from the options below.");

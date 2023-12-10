@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PatientControls {
-    public static void patientControls(int patientId, List<Appointment> appointments, List<Patient>patients, List<Doctor>doctors, Scanner scanner) {
+    public static void patientControls(Patient currentPatient, int patientId, List<Appointment> appointments, List<Patient>patients, List<Doctor>doctors, Scanner scanner) {
         int choice;
 
         do {
@@ -18,14 +18,12 @@ public class PatientControls {
             switch (choice) {
                 case 1:
                     System.out.println("Please fill in all fields to book an appointment: ");
-                    AppointmentManager.bookAppointment(patientId, patients, appointments, doctors, scanner);
+                    AppointmentManager.bookAppointment(currentPatient, appointments, doctors, scanner);
                     break;
                 case 2:
                     AppointmentManager.displayAppointments(patientId, appointments);
                     break;
                 case 3:
-                    System.out.println("Current appointments: ");
-                    AppointmentManager.displayAppointments(patientId, appointments);
                     System.out.print("Please enter appointment ID to change");
                     int appointmentId = NumberValidator.validateNumber(scanner);
                     AppointmentManager.modifyAppointment(patientId,appointments, appointmentId, scanner);
