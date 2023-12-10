@@ -11,17 +11,10 @@ public class LoginManager {
         }
     }
 
-    public static void doctorLogin(Doctor currentDoctor, int id, String lastName, List<Doctor> doctors, List<Appointment> appointments, Scanner scanner) {
-        Doctor matchingDoctor = null;
-        for (Doctor doctor : doctors) {
-            if (doctor.getDoctorId() == id && doctor.getLastName().equals(lastName)) {
-                matchingDoctor = doctor;
-                break;
-            }
-        }
-        if (matchingDoctor != null) {
-            System.out.println("Login successful. Welcome, Dr. " + matchingDoctor.getFirstName() + " " + matchingDoctor.getLastName());
-
+    public static void doctorLogin(Doctor currentDoctor, String lastName, List<Doctor> doctors, List<Appointment> appointments, Scanner scanner) {
+        if (currentDoctor != null && currentDoctor.getLastName().equals(lastName)) {
+            System.out.println("Login successful. Welcome, Dr. " + currentDoctor.getFirstName() + " " + currentDoctor.getLastName());
+            DoctorControls.doctorControls(currentDoctor, doctors, appointments, scanner);
         } else {
             System.out.println("Invalid login credentials for doctor. Please try again.");
         }

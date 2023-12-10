@@ -84,7 +84,7 @@ public class Appointment {
     public String toString() {
         return "Appointment for current patient " +
                 "appointment id: " +
-                appointmentId + ", " + "for patient: " +
+                appointmentId + ", " + "for patient id:" + patient.getPatientId() + " name: " +
                patient.getFirstName() + " " + patient.getLastName()+ ", " + "examination type: "+
                 examinationType +", " + "date and time: " +
                 date +", " +
