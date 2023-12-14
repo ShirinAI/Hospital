@@ -2,19 +2,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DoctorControls {
-    public static void doctorControls(Doctor currentDoctor, List<Doctor> doctors, List<Appointment> appointments, Scanner scanner) {
+    public static void doctorControls(Doctor currentDoctor,  List<Appointment> appointments, Scanner scanner) {
         int choice;
-//        Визуализиране на всички запазени часове от пациентите за даден лекар (ако не е въведено doctor_id, по подразбиране се извежда информация за текущия лекар, влязъл в системата)
-//        Сортиране на всички запазени часове на даден лекар (ако не е въведено doctor_id, по подразбиране се извежда информация за текущия лекар, влязъл в системата) по:
-//        име на пациента (във възходящ и низходящ ред)
-//        записан час за преглед на пациента (във възходящ и низходящ ред)
-//        пациентско ид (във възходящ и низходящ ред)
-//        Системата трябва да поддържа опцията за групиране на пациентите по:
-//        име на специалиста, при който са запазили час
-//        отделение
-//        дата на посещение
-
-
         do {
             System.out.println("Please select an option:");
             System.out.println("1. See all appointments booked with me");

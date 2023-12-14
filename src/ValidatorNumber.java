@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class NumberValidator {
+public class ValidatorNumber {
     public static int validateNumber(Scanner scanner) {
         while (true) {
             try {

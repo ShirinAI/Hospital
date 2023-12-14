@@ -21,16 +21,20 @@ public class PatientControls {
                     AppointmentManager.bookAppointment(currentPatient, appointments, doctors, scanner);
                     break;
                 case 2:
-                    AppointmentManager.displayAppointments(patientId, appointments);
+                    AppointmentManager.displayAppointmentsForCurrentPatient(patientId, appointments);
                     break;
                 case 3:
+                    System.out.println("Current appointments: ");
+                    AppointmentManager.displayAppointmentsForCurrentPatient(patientId, appointments);
                     System.out.print("Please enter appointment ID to change");
-                    int appointmentId = NumberValidator.validateNumber(scanner);
+                    int appointmentId = ValidatorNumber.validateNumber(scanner);
                     AppointmentManager.modifyAppointment(patientId,appointments, appointmentId, scanner);
                     break;
                 case 4:
+                    System.out.println("Current appointments: ");
+                    AppointmentManager.displayAppointmentsForCurrentPatient(patientId, appointments);
                     System.out.print("Please state appointment ID to cancel:");
-                    int appointmentIdToDelete = NumberValidator.validateNumber(scanner);
+                    int appointmentIdToDelete = ValidatorNumber.validateNumber(scanner);
                     AppointmentManager.deleteAppointment(patientId, appointmentIdToDelete, appointments);
                     break;
                 case 5:

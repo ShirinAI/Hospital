@@ -1,17 +1,10 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-
 public class Appointment {
-    private int appointmentId;
-    private Patient patient;
-    private ExaminationType examinationType;
+    private final int appointmentId;
+    private final Patient patient;
+    private final ExaminationType examinationType;
     private String date;
     private String time;
-    private Doctor doctor;
+    private final Doctor doctor;
 
 
     public Appointment(int appointmentId, Patient patient, ExaminationType examinationType, String date, String time, Doctor doctor) {
@@ -31,12 +24,9 @@ public class Appointment {
         this.time = "0";
         this.doctor = null;
     }
+
     public int getAppointmentId() {
         return appointmentId;
-    }
-
-    public void setAppointmentId(int appointmentId) {
-        this.appointmentId = appointmentId;
     }
 
     public ExaminationType getExaminationType() {
@@ -47,20 +37,8 @@ public class Appointment {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     public Doctor getDoctor() {
         return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public void setExaminationType(ExaminationType examinationType) {
-        this.examinationType = examinationType;
     }
 
     public String getDate() {
@@ -79,16 +57,15 @@ public class Appointment {
         this.time = time;
     }
 
-
     @Override
     public String toString() {
         return "Appointment for current patient " +
                 "appointment id: " +
                 appointmentId + ", " + "for patient id:" + patient.getPatientId() + " name: " +
-               patient.getFirstName() + " " + patient.getLastName()+ ", " + "examination type: "+
-                examinationType +", " + "date and time: " +
-                date +", " +
-                time +", " +
-                " Dr." + doctor.getLastName() +"\n";
+                patient.getFirstName() + " " + patient.getLastName() + ", " + "examination type: " +
+                examinationType + ", " + "date and time: " +
+                date + ", " +
+                time + ", " +
+                " Dr." + doctor.getLastName() + "\n";
     }
 }
