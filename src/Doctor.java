@@ -1,30 +1,24 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.util.List;
+import java.util.Scanner;
 
-public class Doctor {
-    private int doctorId;
-    private String firstName;
-    private String lastName;
-    private DoctorSpecialty specialty;
-
+public class Doctor implements DoctorLoginable {
+    private final int doctorId;
+    private final String firstName;
+    private final String lastName;
+    private final DoctorSpecialty specialty;
     public Doctor(int doctorId, String firstName, String lastName, DoctorSpecialty specialty) {
         this.doctorId = doctorId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.specialty = specialty;
     }
-    public static void writeDoctorListToFile(Doctor[] doctorsList){
-        File doctorList = new File("doctors.csv");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(doctorList))) {
-            writer.write("doctor_id, first_name, last_name, specialty");
-            writer.newLine();
-            for (Doctor doctor : doctorsList) {
-                writer.write(doctor.getDoctorId() + "," + doctor.getFirstName() + "," + doctor.getLastName() + "," + doctor.getSpecialty());
-                writer.newLine();
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    @Override
+    public void doctorLogin(Doctor currentDoctor, String lastName, List<Doctor> doctors, List<Appointment> appointments, Scanner scanner) {
+        if (currentDoctor != null && currentDoctor.getLastName().equals(lastName)) {
+            System.out.println("Login successful. Welcome, Dr. " + getFirstName() + " " + getLastName());
+            DoctorControls.doctorControls(currentDoctor, appointments, scanner);
+        } else {
+            System.out.println("Invalid login credentials for doctor. Please try again.");
         }
     }
 
@@ -32,32 +26,16 @@ public class Doctor {
         return doctorId;
     }
 
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
-
     public String getFirstName() {
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public DoctorSpecialty getSpecialty() {
         return specialty;
-    }
-
-    public void setSpecialty(DoctorSpecialty specialty) {
-        this.specialty = specialty;
     }
 
     @Override

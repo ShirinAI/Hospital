@@ -16,7 +16,6 @@ public class AppointmentsViewer {
                 .filter(appointment -> appointment.getDoctor().equals(currentDoctor))
                 .sorted(Comparator.comparing(appointment -> appointment.getPatient().getFirstName()))
                 .toList();
-
     }
     public static List<Appointment> sortByPatientNameDescending(Doctor currentDoctor, List<Appointment> appointments) {
         System.out.println("Appointments for Dr. "+ currentDoctor.getLastName() + "sorted by patient name - descending order");
@@ -30,7 +29,6 @@ public class AppointmentsViewer {
         return appointments.stream()
                 .filter(appointment -> appointment.getDoctor().equals(currentDoctor))
                 .sorted(Comparator.comparing(Appointment::getDate))
-                .sorted(Comparator.comparing(Appointment::getTime))
                 .toList();
     }
     public static List<Appointment> sortByDateAndTimeDescending(Doctor currentDoctor, List<Appointment> appointments) {
@@ -61,13 +59,12 @@ public class AppointmentsViewer {
             System.out.println("1. Appointment ID number");
             System.out.println("2. Doctor");
             System.out.println("3. Examination Type");
-            System.out.println("3. Date and time");
+            System.out.println("4. Date and time");
             System.out.println("5. Exit");
             choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                    System.out.println("Please fill in all fields to book an appointment: ");
                     System.out.println(appointments);
                     break;
                 case 2:
@@ -85,7 +82,6 @@ public class AppointmentsViewer {
                 case 4:
                     List<Appointment> sortedByDateAndTime = appointments.stream()
                             .sorted(Comparator.comparing(Appointment::getDate))
-                            .sorted(Comparator.comparing(Appointment::getTime))
                             .toList();
                     System.out.println(sortedByDateAndTime);
                     break;

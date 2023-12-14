@@ -1,5 +1,5 @@
 public enum DoctorSpecialty {
-        ANESTHESIOLOGY,
+    ANESTHESIOLOGY,
     INTERNAL_DISEASES,
     GASTROENTEROLOGY,
     ENDOCRINOLOGY,

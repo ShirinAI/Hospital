@@ -72,19 +72,19 @@ public class Main {
             switch (option) {
                 case 1:
                     System.out.println("Please enter your doctor's ID: ");
-                    int id = NumberValidator.validateNumber(scanner);
+                    int id = ValidatorNumber.validateNumber(scanner);
                     Doctor currentDoctor = UserManager.findDoctorById(id, doctors);
                     System.out.println("Please enter your last name: ");
                     String surname = scanner.nextLine();
-                    LoginManager.doctorLogin(currentDoctor, surname, doctors, appointments, scanner);
+                    currentDoctor.doctorLogin(currentDoctor, surname, doctors, appointments, scanner);
                     break;
                 case 2:
                     System.out.println("Please enter your patient ID: ");
-                    int patientId = NumberValidator.validateNumber(scanner);
+                    int patientId = ValidatorNumber.validateNumber(scanner);
                     Patient currentPatient = UserManager.findPatientById(patientId, patients);
                     System.out.println("Please enter your first name: ");
                     String patientName = scanner.nextLine();
-                    LoginManager.patientLogin(currentPatient, patientId, patientName, patients, appointments, doctors, scanner);
+                    currentPatient.patientLogin(currentPatient, patientId, patientName, patients, appointments, doctors, scanner);
                     break;
                 default:
                     System.out.println("Invalid option. Please choose from the options below.");
