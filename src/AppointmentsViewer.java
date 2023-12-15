@@ -28,7 +28,7 @@ public class AppointmentsViewer {
         System.out.println("Appointments for Dr. "+ currentDoctor.getLastName() + "sorted by time and date - ascending order");
         return appointments.stream()
                 .filter(appointment -> appointment.getDoctor().equals(currentDoctor))
-                .sorted(Comparator.comparing(Appointment::getDate))
+                .sorted(Comparator.comparing(Appointment::getSortableDate))
                 .toList();
     }
     public static List<Appointment> sortByDateAndTimeDescending(Doctor currentDoctor, List<Appointment> appointments) {
@@ -81,7 +81,7 @@ public class AppointmentsViewer {
                     break;
                 case 4:
                     List<Appointment> sortedByDateAndTime = appointments.stream()
-                            .sorted(Comparator.comparing(Appointment::getDate))
+                            .sorted(Comparator.comparing(Appointment::getSortableDate))
                             .toList();
                     System.out.println(sortedByDateAndTime);
                     break;

@@ -13,7 +13,6 @@ public class AppointmentManager {
         System.out.println("You selected: " + specialty);
         Doctor selectedDoctor = findDoctorBySpecialty(specialty, doctors);
         String date = ValidatorDate.validateDateFormatAndDate(scanner);
-        System.out.println("Time HH:mm:");
         String time = ValidatorTime.validateTimeFormat(scanner);
         if (!isAppointmentAvailable(date, time, selectedDoctor, appointments)) {
             return;
@@ -32,7 +31,6 @@ public class AppointmentManager {
 
     public static void modifyAppointment(int patientId, List<Appointment> appointments, int appointmentId, Scanner scanner) {
         Appointment appointmentToModify = null;
-
         for (Appointment appointment : appointments) {
             if (patientId == appointment.getPatient().getPatientId() && appointmentId == appointment.getAppointmentId()) {
                 appointmentToModify = appointment;
@@ -43,16 +41,11 @@ public class AppointmentManager {
             System.out.println("Appointment not found for modification.");
             return;
         }
-        System.out.println("Please select new date and time for the appointment:");
-        System.out.println("Date DD-MM-YYYY:");
         String date = ValidatorDate.validateDateFormatAndDate(scanner);
-        System.out.println("Time HH:mm:");
         String time = ValidatorTime.validateTimeFormat(scanner);
-
         if (!isAppointmentAvailable(date, time, appointmentToModify.getDoctor(), appointments)) {
             return;
         }
-
         appointmentToModify.setDate(date);
         appointmentToModify.setTime(time);
         System.out.println("Appointment has successfully been updated:\n" + appointmentToModify);

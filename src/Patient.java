@@ -14,6 +14,13 @@ public class Patient implements PatientLoginable{
         this.age = age;
 
     }
+    public Patient() {
+        this.patientId = 120;
+        this.firstName = "New Patient";
+        this.lastName = "New Patient";
+        this.age = 18;
+
+    }
     @Override
     public void patientLogin(Patient currentPatient, int id, String firstName, List<Patient> patients, List<Appointment> appointments, List<Doctor> doctors, Scanner scanner){
         if (currentPatient != null && currentPatient.getFirstName().equals(firstName)) {
@@ -33,6 +40,10 @@ public class Patient implements PatientLoginable{
 
     public String getLastName() {
         return lastName;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     @Override

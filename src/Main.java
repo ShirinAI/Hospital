@@ -10,7 +10,6 @@ public class Main {
         patientsList.add(new Patient(3, "Tim", "Danes", 77));
         patientsList.add(new Patient(4, "Philip", "Summer", 56));
         patientsList.add(new Patient(5, "Donna", "Matthews", 57));
-
         List<Doctor> doctorsList = new ArrayList<>();
         doctorsList.add(new Doctor(1, "Gergana", "Georgieva", DoctorSpecialty.CARDIOLOGY));
         doctorsList.add(new Doctor(2, "Georgi", "Georgiev", DoctorSpecialty.INTERNAL_DISEASES));
@@ -66,8 +65,7 @@ public class Main {
             System.out.println("1. Login as doctor");
             System.out.println("2. Login as patient");
 
-            option = scanner.nextInt();
-            scanner.nextLine();
+            option = ValidatorNumber.validateNumber(scanner);
 
             switch (option) {
                 case 1:

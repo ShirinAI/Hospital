@@ -1,3 +1,6 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Appointment {
     private final int appointmentId;
     private final Patient patient;
@@ -56,7 +59,15 @@ public class Appointment {
     public void setTime(String time) {
         this.time = time;
     }
-
+    public String getSortableDate() {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyyMMdd");
+            return outputFormat.format(inputFormat.parse(date));
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Invalid date format: " + date, e);
+        }
+    }
     @Override
     public String toString() {
         return "Appointment for current patient " +

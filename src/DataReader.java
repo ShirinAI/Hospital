@@ -41,7 +41,7 @@ public class DataReader {
                 int patientId = Integer.parseInt(arr[0].trim());
                 String firstName = arr[1].trim();
                 String lastName = arr[2].trim();
-                int age = Integer.parseInt(arr[0].trim());
+                int age = Integer.parseInt(arr[3].trim());
                 Patient patient = new Patient(patientId, firstName, lastName, age);
                 patients.add(patient);
             }
